@@ -11,14 +11,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Install Chrome
 RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add
 RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
-RUN apt-get -y update && apt-get -y install google-chrome-stable
+RUN apt-get -y update && apt-get -y install google-chrome-stable --no-install-recommends
 
 # Setup version variables
-ENV CHROMEDRIVER_VERSION 2.46
-ENV ALLURE_VERSION 2.8.0
+ENV CHROMEDRIVER_VERSION 74.0.3729.6
+ENV ALLURE_VERSION 2.10.0
 
 # Download ChromeDriver
-RUN wget http://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip
+RUN wget https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip
 RUN unzip chromedriver_linux64.zip
 RUN rm chromedriver_linux64.zip
 
@@ -28,7 +28,7 @@ RUN chown root:root /usr/local/bin/chromedriver
 RUN chmod 0755 /usr/local/bin/chromedriver
 
 # Download Allure binaries
-RUN wget -O allure-${ALLURE_VERSION}.zip https://github.com/allure-framework/allure2/releases/download/${ALLURE_VERSION}/allure-${ALLURE_VERSION}.zip
+RUN wget -O allure-${ALLURE_VERSION}.zip https://dl.bintray.com/qameta/maven/io/qameta/allure/allure-commandline/${ALLURE_VERSION}/allure-commandline-${ALLURE_VERSION}.zip
 RUN unzip allure-${ALLURE_VERSION}.zip
 RUN rm allure-${ALLURE_VERSION}.zip
 
