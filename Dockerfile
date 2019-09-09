@@ -15,7 +15,7 @@ RUN apt-get -y update && apt-get -y install google-chrome-stable --no-install-re
 
 # Setup version variables
 ENV CHROMEDRIVER_VERSION 76.0.3809.126
-ENV ALLURE_VERSION 2.12.1
+ENV ALLURE_VERSION 2.13.0
 
 # Download ChromeDriver
 RUN wget https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip
