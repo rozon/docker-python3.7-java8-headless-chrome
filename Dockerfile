@@ -1,6 +1,6 @@
 FROM python:stretch
 
-MAINTAINER Anthony Rozon <arozonm@gmail.com>
+LABEL maintainer="Anthony Rozon <arozonm@gmail.com>"
 
 # Install dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
